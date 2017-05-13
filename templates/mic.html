@@ -222,7 +222,7 @@ if (!('webkitSpeechRecognition' in window)) {
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(final_transcript);
-    myfunc();
+    voiceToImg(mykeyword);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
@@ -230,7 +230,7 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 }
 
-function myfunc(keyword=mykeyword) {
+function voiceToImg(keyword) {
     var params = {
         // Request parameters
         "q": keyword,
