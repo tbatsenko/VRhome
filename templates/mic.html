@@ -32,9 +32,12 @@
     <img id="start_img" src="mic.gif" alt="Start"></button>
 </div>
 <div id="results">
-  <img id ="myimg_1" style="width : 200px;" src="" alt="">
-  <img id ="myimg_2" style="width : 200px;" src="" alt="">
-  <img id ="myimg_3" style="width : 200px;" src="" alt="">
+  <div class="img_results">
+      <img id ="myimg_1" style="width : 200px;" src="" alt="">
+      <img id ="myimg_2" style="width : 200px;" src="" alt="">
+      <img id ="myimg_3" style="width : 200px;" src="" alt="">
+  </div>
+  <img src="final_img" src="" alt="">
   <span id="final_span" class="final"></span>
   <span id="interim_span" class="interim"></span>
   <p>
@@ -353,12 +356,18 @@ function showButtons(style) {
   email_info.style.display = 'none';
 }
 myimg_1.onclick = function() {
+    document.getElementById("img_results").style.display = "none";
+    document.getElementById("final_img") = document.getElementById("myimg_1").src;
     alert( 'Спасибо 1' );
   };
 myimg_2.onclick = function() {
+    document.getElementById("img_results").style.display = "none";
+    document.getElementById("final_img") = document.getElementById("myimg_2").src;
   alert( 'Спасибо 2' );
 };
 myimg_3.onclick = function() {
+    document.getElementById("img_results").style.display = "none";
+    document.getElementById("final_img") = document.getElementById("myimg_3").src;
   alert( 'Спасибо 3' );
 };
 
