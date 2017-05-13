@@ -47,7 +47,7 @@
     float: right;
   }
   .sidebyside {
-    display: inline-block;
+    display: none;
     width: 45%;
     min-height: 40px;
     text-align: left;

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Web Speech API Demo</title>
+<title>VR ideas</title>
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
-<h1 class="center" id="headline">
-  <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-    Web Speech API</a> Demonstration</h1>
+<h1 class="center" id="headline">VR ideas</h1>
 <div id="info">
   <p id="info_start">Click on the microphone icon and begin speaking.</p>
   <p id="info_speak_now">Speak now.</p>
@@ -29,7 +27,7 @@
 </div>
 <div class="right">
   <button id="start_button" onclick="startButton(event)">
-    <img id="start_img" src="mic.gif" alt="Start"></button>
+    <img id="start_img" src="../static/mic.gif" alt="Start"></button>
 </div>
 <div id="results">
   <div class="img_results" id="img_results">
@@ -167,17 +165,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = 'mic-animate.gif';
+    start_img.src = '../static/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = 'mic.gif';
+      start_img.src = '../static/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = 'mic.gif';
+      start_img.src = '../static/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -196,7 +194,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = 'mic.gif';
+    start_img.src = '../static/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -360,21 +358,21 @@ myimg_1.onclick = function() {
     document.getElementById("final_img").src = imgsrc;
     document.getElementById("img_results").style.display = "none";
 
-    alert( 'Спасибо 1' );
+    // alert( 'Спасибо 1' );
   };
 myimg_2.onclick = function() {
     var imgsrc = document.getElementById("myimg_2").src;
     document.getElementById("final_img").src = imgsrc;
     document.getElementById("img_results").style.display = "none";
 
-  alert( 'Спасибо 2' );
+  // alert( 'Спасибо 2' );
 };
 myimg_3.onclick = function() {
     var imgsrc = document.getElementById("myimg_3").src;
     document.getElementById("final_img").src = imgsrc;
     document.getElementById("img_results").style.display = "none";
 
-  alert( 'Спасибо 3' );
+  // alert( 'Спасибо 3' );
 };
 
 </script>
