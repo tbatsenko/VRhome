@@ -145,7 +145,9 @@ var start_timestamp;
     // voiceToImg(mykeyword);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
-      showButtons('inline-block');
+    //   showButtons('inline-block');
+        console.log(final_transcript);
+        console.log(interim_transcript);
     }
   };
 // }
