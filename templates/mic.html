@@ -221,8 +221,8 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION");
-    var keyword = linebreak(final_transcript);
-    $(function myfunc(keyword=keyword)) {
+    var mykeyword = linebreak(final_transcript);
+    function myfunc(keyword=mykeyword) {
         var params = {
             // Request parameters
             "q": keyword,
@@ -247,7 +247,7 @@ if (!('webkitSpeechRecognition' in window)) {
         })
         .fail(function() {
             alert("error");
-        });
+        }
     });
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
