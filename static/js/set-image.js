@@ -152,7 +152,8 @@ var start_timestamp;
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
-            console.log(sceneEl.querySelector('#mytext'));
+            console.log(sceneEl.querySelector('#mytext').value);
+            sceneEl.querySelector('#mytext').value=interim_transcript;
             console.log("STOPPED");
 
         }
