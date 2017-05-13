@@ -32,9 +32,9 @@
     <img id="start_img" src="mic.gif" alt="Start"></button>
 </div>
 <div id="results">
-  <img id ="myimg-1" style="width : 200px;" src="" alt="">
-  <img id ="myimg-2" style="width : 200px;" src="" alt="">
-  <img id ="myimg-3" style="width : 200px;" src="" alt="">
+  <img id ="myimg_1" style="width : 200px;" src="" alt="">
+  <img id ="myimg_2" style="width : 200px;" src="" alt="">
+  <img id ="myimg_3" style="width : 200px;" src="" alt="">
   <span id="final_span" class="final"></span>
   <span id="interim_span" class="interim"></span>
   <p>
@@ -253,9 +253,9 @@ function voiceToImg(keyword) {
     .done(function(data) {
         // alert("success");
         console.log(data.value[1].contentUrl);
-        document.getElementById("myimg-1").src = data.value[1].contentUrl;
-        document.getElementById("myimg-2").src = data.value[2].contentUrl;
-        document.getElementById("myimg-3").src = data.value[3].contentUrl;
+        document.getElementById("myimg_1").src = data.value[1].contentUrl;
+        document.getElementById("myimg_2").src = data.value[2].contentUrl;
+        document.getElementById("myimg_3").src = data.value[3].contentUrl;
     })
     .fail(function() {
         // alert("error");
@@ -352,6 +352,15 @@ function showButtons(style) {
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
 }
+myimg_1.onclick = function() {
+    alert( 'Спасибо 1' );
+  };
+myimg_2.onclick = function() {
+  alert( 'Спасибо 2' );
+};
+myimg_3.onclick = function() {
+  alert( 'Спасибо 3' );
+};
 
 </script>
 <!-- <script src="speech.js"></script> -->
