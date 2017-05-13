@@ -46,6 +46,11 @@
   .right {
     float: right;
   }
+  
+  .display-none {
+      display: none;
+  }
+
   .sidebyside {
     display: none;
     width: 45%;
