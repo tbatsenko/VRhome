@@ -221,8 +221,8 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION")
-    console.log(linebreak(final_transcript))
-    $(function(keyword=linebreak(final_transcript)) {
+    var keyword = linebreak(final_transcript))
+    $(function(keyword=keyword)) {
         var params = {
             // Request parameters
             "q": keyword,
