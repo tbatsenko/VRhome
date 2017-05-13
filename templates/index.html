@@ -52,6 +52,17 @@
         <!-- <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity> -->
       </a-entity>
 
+      <!-- FOR RECOGNITION -->
+      <a-entity id="select_language" layout="type: line; margin: 1.5" position="0 -1 -4">
+        <a-text id="mytext" value="Say: Hello World! to start"></a-text>
+        <!-- <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity> -->
+        <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
+        <!-- <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity> -->
+      </a-entity>
+      <select id="select_language" onchange="updateCountry()"></select>
+      &nbsp;&nbsp;
+      <select id="select_dialect"></select>
+
 
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>
