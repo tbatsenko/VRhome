@@ -156,7 +156,7 @@ var start_timestamp;
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
             console.log(sceneEl.querySelector('#mytext').value);
-            sceneEl.querySelector('#mytext').outerHTML="<a-text id='mytext' value='{{interim_transcript}}' position="" rotation="" scale="" visible="" text=""></a-text>";
+            sceneEl.querySelector('#mytext').outerHTML='<a-text id="mytext" value="${interim_transcript}" position="" rotation="" scale="" visible="" text=""></a-text>';
             console.log("STOPPED");
 
         }
