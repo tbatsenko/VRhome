@@ -149,6 +149,7 @@ var start_timestamp;
     //   showButtons('inline-block');
         console.log(final_transcript);
         console.log(interim_transcript);
+        document.querySelector('#mytext').value = interim_transcript;
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
