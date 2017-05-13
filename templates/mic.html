@@ -221,11 +221,13 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION")
+    console.log(linebreak(final_transcript))
     $(function(keyword=linebreak(final_transcript)) {
         var params = {
             // Request parameters
             "q": keyword,
         };
+        console.log(keyword);
 
         $.ajax({
             url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
