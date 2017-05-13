@@ -59,9 +59,9 @@ var final_transcript = '';
 var recognizing = true;
 var ignore_onend;
 var start_timestamp;
-if (!('webkitSpeechRecognition' in window)) {
-  upgrade();
-} else {
+// if (!('webkitSpeechRecognition' in window)) {
+//   upgrade();
+// } else {
   // start_button.style.display = 'inline-block';
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
@@ -131,43 +131,43 @@ if (!('webkitSpeechRecognition' in window)) {
         console.log(sceneEl.querySelector('#mytext'));
 
     }
-    voiceToImg(mykeyword);
+    // voiceToImg(mykeyword);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
   };
-}
+// }
 
-function voiceToImg(keyword) {
-    var params = {
-        // Request parameters
-        "q": keyword,
-    };
-    console.log(keyword);
-
-    $.ajax({
-        url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
-        beforeSend: function(xhrObj){
-            // Request headers
-            xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
-        },
-        type: "POST",
-        // Request body
-        data: "{body}",
-    })
-    .done(function(data) {
-        // alert("success");
-        console.log(data.value[1].contentUrl);
-        document.getElementById("myimg_1").src = data.value[1].contentUrl;
-        document.getElementById("myimg_2").src = data.value[2].contentUrl;
-        document.getElementById("myimg_3").src = data.value[3].contentUrl;
-    })
-    .fail(function() {
-        // alert("error");
-    });
-}
+// function voiceToImg(keyword) {
+//     var params = {
+//         // Request parameters
+//         "q": keyword,
+//     };
+//     console.log(keyword);
+//
+//     $.ajax({
+//         url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
+//         beforeSend: function(xhrObj){
+//             // Request headers
+//             xhrObj.setRequestHeader("Content-Type","multipart/form-data");
+//             xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
+//         },
+//         type: "POST",
+//         // Request body
+//         data: "{body}",
+//     })
+//     .done(function(data) {
+//         // alert("success");
+//         console.log(data.value[1].contentUrl);
+//         document.getElementById("myimg_1").src = data.value[1].contentUrl;
+//         document.getElementById("myimg_2").src = data.value[2].contentUrl;
+//         document.getElementById("myimg_3").src = data.value[3].contentUrl;
+//     })
+//     .fail(function() {
+//         // alert("error");
+//     });
+// }
 
 function upgrade() {
   // start_button.style.visibility = 'hidden';
