@@ -222,38 +222,40 @@ if (!('webkitSpeechRecognition' in window)) {
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(final_transcript);
-    function myfunc(keyword=mykeyword) {
-        var params = {
-            // Request parameters
-            "q": keyword,
-        };
-        console.log(keyword);
-
-        $.ajax({
-            url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
-            },
-            type: "POST",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(data) {
-            alert("success");
-            console.log(data.value[1].contentUrl);
-            document.getElementById("myimg").src = data.value[1].contentUrl;
-        })
-        .fail(function() {
-            alert("error");
-        }
-    });
+    myfunc();
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
   };
+}
+
+function myfunc(keyword=mykeyword) {
+    var params = {
+        // Request parameters
+        "q": keyword,
+    };
+    console.log(keyword);
+
+    $.ajax({
+        url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
+        beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Content-Type","multipart/form-data");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
+        },
+        type: "POST",
+        // Request body
+        data: "{body}",
+    })
+    .done(function(data) {
+        alert("success");
+        console.log(data.value[1].contentUrl);
+        document.getElementById("myimg").src = data.value[1].contentUrl;
+    })
+    .fail(function() {
+        alert("error");
+    });
 }
 
 function upgrade() {
