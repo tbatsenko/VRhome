@@ -213,7 +213,7 @@ function startButton(event) {
 //   } else {
 //     info.style.visibility = 'hidden';
 //   }
-}
+// }
 
 myimg_1.onclick = function() {
     var imgsrc = document.getElementById("myimg_1").src;
