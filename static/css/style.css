@@ -53,6 +53,12 @@
     text-align: left;
     vertical-align: top;
   }
+  .img_results{
+      width: 300px;
+  }
+  .img{
+      width: 200px;
+  }
   #headline {
     font-size: 40px;
     font-weight: 300;
