@@ -4,6 +4,10 @@
  * Component that listens to an event, fades out an entity, swaps the texture, and fades it
  * back in.
  */
+document.querySelector('#cube').addEventListener('click', function () {
+this.setAttribute('material', 'color', 'red');
+console.log('I was clicked!');
+});
 AFRAME.registerComponent('set-image', {
   schema: {
     on: {type: 'string'},

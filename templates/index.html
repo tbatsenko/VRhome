@@ -53,9 +53,12 @@
       </a-entity>
 
       <!-- FOR RECOGNITION -->
+      <a-entity id="cube" geometry="primitive: box" material="color: blue"></a-entity>
+
+
       <a-entity template="src: #link" id="start_button" layout="type: line; margin: 1.5" position="0 2 -5" onclick="startButton(event)">
-        <a-text id="mytext"  value="Click to start"></a-text>
-        <!-- <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity> -->
+        <!-- <a-text id="mytext"  value="Click to start"></a-text> -->
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
       </a-entity>
 
 
