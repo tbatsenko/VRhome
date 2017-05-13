@@ -83,7 +83,7 @@ function updateCountry() {
 
 var create_email = false;
 var final_transcript = '';
-var recognizing = false;
+var recognizing = true;
 var ignore_onend;
 var start_timestamp;
 if (!('webkitSpeechRecognition' in window)) {
@@ -157,6 +157,11 @@ if (!('webkitSpeechRecognition' in window)) {
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(final_transcript);
+    if (mykeyword =="start" || mykeyword=="Start") {
+        var sceneEl = document.querySelector('a-scene');
+        console.log(sceneEl.querySelector('#mytext'));
+
+    }
     voiceToImg(mykeyword);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
