@@ -215,24 +215,24 @@ function startButton(event) {
 //   }
 // }
 
-myimg_1.onclick = function() {
-    var imgsrc = document.getElementById("myimg_1").src;
-    document.getElementById("final_img").src = imgsrc;
-    document.getElementById("img_results").style.display = "none";
-
-    // alert( 'Спасибо 1' );
-  };
-myimg_2.onclick = function() {
-    var imgsrc = document.getElementById("myimg_2").src;
-    document.getElementById("final_img").src = imgsrc;
-    document.getElementById("img_results").style.display = "none";
-
-  // alert( 'Спасибо 2' );
-};
-myimg_3.onclick = function() {
-    var imgsrc = document.getElementById("myimg_3").src;
-    document.getElementById("final_img").src = imgsrc;
-    document.getElementById("img_results").style.display = "none";
-
-  // alert( 'Спасибо 3' );
-};
+// myimg_1.onclick = function() {
+//     var imgsrc = document.getElementById("myimg_1").src;
+//     document.getElementById("final_img").src = imgsrc;
+//     document.getElementById("img_results").style.display = "none";
+//
+//     // alert( 'Спасибо 1' );
+//   };
+// myimg_2.onclick = function() {
+//     var imgsrc = document.getElementById("myimg_2").src;
+//     document.getElementById("final_img").src = imgsrc;
+//     document.getElementById("img_results").style.display = "none";
+//
+//   // alert( 'Спасибо 2' );
+// };
+// myimg_3.onclick = function() {
+//     var imgsrc = document.getElementById("myimg_3").src;
+//     document.getElementById("final_img").src = imgsrc;
+//     document.getElementById("img_results").style.display = "none";
+//
+//   // alert( 'Спасибо 3' );
+// };
