@@ -151,7 +151,7 @@ var start_timestamp;
         console.log(interim_transcript);
         //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
 
-        document.querySelector('#mytext').outerHTML="<a-text id='mytext' value='{{interim_transcript}}' position="" rotation="" scale="" visible="" text=""></a-text>";
+        document.querySelector('#mytext').outerHTML="<a-text id='mytext' value="+interim_transcript+" position="" rotation="" scale="" visible="" text=""></a-text>";
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
