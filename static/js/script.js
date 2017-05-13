@@ -97,17 +97,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = 'mic-animate.gif';
+    start_img.src = '../static/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = 'mic.gif';
+      start_img.src = '../static/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = 'mic.gif';
+      start_img.src = '../static/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -126,7 +126,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = 'mic.gif';
+    start_img.src = '../static/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -155,38 +155,44 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
-    console.log("SUCCESS RECOGNITION")
-    $(function(keyword=linebreak(final_transcript)) {
-        var params = {
-            // Request parameters
-            "q": keyword,
-        };
-
-        $.ajax({
-            url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
-            },
-            type: "POST",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(data) {
-            alert("success");
-            console.log(data.value[1].contentUrl);
-            document.getElementById("myimg").src = data.value[1].contentUrl;
-        })
-        .fail(function() {
-            alert("error");
-        });
-    });
+    console.log("SUCCESS RECOGNITION");
+    var mykeyword = linebreak(final_transcript);
+    voiceToImg(mykeyword);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
   };
+}
+
+function voiceToImg(keyword) {
+    var params = {
+        // Request parameters
+        "q": keyword,
+    };
+    console.log(keyword);
+
+    $.ajax({
+        url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
+        beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Content-Type","multipart/form-data");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
+        },
+        type: "POST",
+        // Request body
+        data: "{body}",
+    })
+    .done(function(data) {
+        // alert("success");
+        console.log(data.value[1].contentUrl);
+        document.getElementById("myimg_1").src = data.value[1].contentUrl;
+        document.getElementById("myimg_2").src = data.value[2].contentUrl;
+        document.getElementById("myimg_3").src = data.value[3].contentUrl;
+    })
+    .fail(function() {
+        // alert("error");
+    });
 }
 
 function upgrade() {
@@ -279,3 +285,24 @@ function showButtons(style) {
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
 }
+myimg_1.onclick = function() {
+    var imgsrc = document.getElementById("myimg_1").src;
+    document.getElementById("final_img").src = imgsrc;
+    document.getElementById("img_results").style.display = "none";
+
+    // alert( 'Спасибо 1' );
+  };
+myimg_2.onclick = function() {
+    var imgsrc = document.getElementById("myimg_2").src;
+    document.getElementById("final_img").src = imgsrc;
+    document.getElementById("img_results").style.display = "none";
+
+  // alert( 'Спасибо 2' );
+};
+myimg_3.onclick = function() {
+    var imgsrc = document.getElementById("myimg_3").src;
+    document.getElementById("final_img").src = imgsrc;
+    document.getElementById("img_results").style.display = "none";
+
+  // alert( 'Спасибо 3' );
+};
