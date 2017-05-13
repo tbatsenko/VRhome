@@ -62,7 +62,7 @@ var start_timestamp;
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
-  start_button.style.display = 'inline-block';
+  // start_button.style.display = 'inline-block';
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
@@ -170,7 +170,7 @@ function voiceToImg(keyword) {
 }
 
 function upgrade() {
-  start_button.style.visibility = 'hidden';
+  // start_button.style.visibility = 'hidden';
   // showInfo('info_upgrade');
 }
 
