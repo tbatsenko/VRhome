@@ -14,5 +14,3 @@ def mic():
 @app.route('/auth')
 def auth():
     return render_template("login.html")
-
-app.run()
