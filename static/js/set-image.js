@@ -128,9 +128,18 @@ var start_timestamp;
     final_span.innerHTML = linebreak(final_transcript);
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(final_transcript);
+    console.log(mykeyword);
     if (mykeyword =="start" || mykeyword=="Start") {
+        recognition.start();
         var sceneEl = document.querySelector('a-scene');
         console.log(sceneEl.querySelector('#mytext'));
+        console.log("STARTED");
+
+    }
+    if (mykeyword =="stop" || mykeyword=="Stop") {
+        var sceneEl = document.querySelector('a-scene');
+        console.log(sceneEl.querySelector('#mytext'));
+        console.log("STOPPED");
 
     }
     // voiceToImg(mykeyword);
