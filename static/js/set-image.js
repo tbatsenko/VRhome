@@ -137,6 +137,7 @@ var start_timestamp;
 
     }
     if (mykeyword =="stop" || mykeyword=="Stop") {
+        recognition.stop();
         var sceneEl = document.querySelector('a-scene');
         console.log(sceneEl.querySelector('#mytext'));
         console.log("STOPPED");
