@@ -30,7 +30,7 @@ setTimeout(function () {
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.start();
-}, 1000);
+}, 4000);
 
 recognition.onstart = function() {
     recognizing = true;
