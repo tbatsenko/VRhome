@@ -69,17 +69,11 @@ recognition.onresult = function(event) {
     console.log(mykeyword);
     if (mykeyword =="start" || mykeyword=="Start") {
         recognition.start();
-        var sceneEl = document.querySelector('a-scene');
-        console.log(sceneEl.querySelector('#mytext'));
         console.log("STARTED");
-
     }
     if (mykeyword =="stop" || mykeyword=="Stop") {
         recognition.stop();
-        var sceneEl = document.querySelector('a-scene');
-        console.log(sceneEl.querySelector('#mytext'));
         console.log("STOPPED");
-
     }
 // voiceToImg(mykeyword);
     // interim_span.innerHTML = linebreak(interim_transcript);
@@ -89,7 +83,7 @@ recognition.onresult = function(event) {
         console.log(interim_transcript);
     //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
     //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
-        document.querySelector('#speech').outerHTML='a-entity id="speech" text='+interim_transcript+'></a-entity>';
+        document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>'
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
