@@ -50,11 +50,11 @@ recognition.onresult = function(event) {
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(interim_transcript);
     // console.log(mykeyword);
-    if (mykeyword.search(" add left") > -1 || mykeyword.search("add left") > -1 || mykeyword.search(" add left ") > -1) {
+    if (mykeyword.search("left") > -1 || mykeyword.search("left") > -1 || mykeyword.search(" add left ") > -1) {
         document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 5 0" rotation="0 0 0"></a-box>';
         console.log("ADDED add OBJECTs LEFT");
     }
-    else if (mykeyword.search(" add right") > -1 || mykeyword.search("add right") > -1 || mykeyword.search(" add right ") > -1) {
+    else if (mykeyword.search("right") > -1 || mykeyword.search("right") > -1 || mykeyword.search("right ") > -1) {
         document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
         console.log("ADDED add OBJECTs");
     }
