@@ -1,14 +1,18 @@
-var recognizing = true;
+var recognizing = false;
 var ignore_onend;
 var start_timestamp;
 var counter = 0;
 
+var DEPTH = 5;
 var WIDTH = 5;
 var HEIGTH = 5;
 
 var sceneEl = document.querySelector('a-scene');
 for (var i = 0; i < HEIGTH; i++) {
     for (var j = 0; j < WIDTH; j++) {
+        // if () {
+        //
+        // }
         var aBox = document.createElement('a-box');;
         aBox.setAttribute('id', 'myimg_1');
         aBox.setAttribute('depth', '4');
@@ -16,12 +20,18 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
+        aBox.setAttribute('position', (-10+j*6).toString()+' '+(10-i*6).toString()+'0');
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
     }
 }
+// for (var z = 0; z < DEPTH; z++) {
+//     for (var j = 0; j < HEIGTH; j++) {
+//
+//     }
+//
+// }
 
 var activeBox = document.getElementById('myimg_1');
 
@@ -208,6 +218,7 @@ AFRAME.registerComponent('cursor-listener', {
     this.el.addEventListener('click', function (evt) {
     //   var randomIndex = Math.floor(Math.random() * COLORS.length);
     //   this.setAttribute('material', 'color', COLORS[randomIndex]);
+      recognizing = true;
       if (!activeBox.getAttribute('src')) {
           activeBox.setAttribute('material', 'opacity: 0.1');
       }
