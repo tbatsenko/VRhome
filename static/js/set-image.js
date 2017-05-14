@@ -15,7 +15,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
-        aBox.setAttribute('material', 'opacity: 0');
+        aBox.setAttribute('material', 'opacity: 0.1');
         aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
         aBox.setAttribute('cursor-listener');
 
@@ -209,10 +209,10 @@ AFRAME.registerComponent('cursor-listener', {
     //   var randomIndex = Math.floor(Math.random() * COLORS.length);
     //   this.setAttribute('material', 'color', COLORS[randomIndex]);
       if (!activeBox.getAttribute('src')) {
-          activeBox.setAttribute('material', 'opacity: 0');
+          activeBox.setAttribute('material', 'opacity: 0.1');
       }
       activeBox = this;
-      activeBox.setAttribute('material', 'opacity: 0.5');
+      activeBox.setAttribute('material', 'opacity: 0.4');
 
       console.log('I was clicked at: ', evt.detail.intersection.point);
     });
