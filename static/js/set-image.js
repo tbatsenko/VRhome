@@ -1,7 +1,8 @@
-var final_transcript = '';
+// var final_transcript = '';
 var recognizing = true;
 var ignore_onend;
 var start_timestamp;
+var counter = 0;
 
 var recognition = new webkitSpeechRecognition();
 recognition.continuous = true;
@@ -40,20 +41,20 @@ recognition.onend = function() {
 recognition.onresult = function(event) {
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
-        if (event.results[i].isFinal) {
-            final_transcript = event.results[i][0].transcript;
-        } else {
+        // if (event.results[i].isFinal) {
+        //     final_transcript = event.results[i][0].transcript;
+        // } else {
             interim_transcript = event.results[i][0].transcript;
-        }
+
     }
-    final_transcript = capitalize(final_transcript);
+    interim_transcript = capitalize(interim_transcript);
     // final_span.innerHTML = linebreak(final_transcript);
 
     console.log("SUCCESS RECOGNITION");
-    var mykeyword = linebreak(final_transcript);
+    var mykeyword = linebreak(interim_transcript);
     console.log(mykeyword);
-    if (mykeyword =="start" || mykeyword=="Start") {
-        recognition.start();
+    if (interim_transcript.search(" new ") != -1 || interim_transcript.search("new ") != -1 || interim_transcript.search(" new") != -1) {
+        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+str(counter*4)+' 0 0" rotation="0 0 0"></a-box>'
         console.log("STARTED");
     }
     if (mykeyword =="stop" || mykeyword=="Stop") {
@@ -111,7 +112,7 @@ function voiceToImg(keyword) {
 
             img = document.getElementById('myimg_3');
             img.setAttribute('src', data.value[3].contentUrl);
-            document.getElementById("myimg_1").src = data.value[1].contentUrl;
+            // document.getElementById("myimg_1").src = data.value[1].contentUrl;
             // document.getElementById("myimg_1").src.replace(/s([01]?[0-5]?[0-9]?[0-9]|1600)[^0-9]/, "s726");
             //
             // document.getElementById("myimg_2").src = data.value[2].contentUrl;
