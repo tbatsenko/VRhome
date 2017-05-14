@@ -45,7 +45,7 @@ recognition.onresult = function(event) {
     recognition.stop()
     setTimeout(function () {
         recognition.start()
-    }, 2000);
+    }, 1000);
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
             interim_transcript = event.results[i][0].transcript;
@@ -85,7 +85,7 @@ recognition.onresult = function(event) {
         activeBox = aBox;
         counter += 1;
     }
-    else if (mykeyword.search("up ") == 0) {
+    else if (mykeyword.search("up") > -1) {
         var sceneEl = document.querySelector('a-scene');
         var aBox = document.createElement('a-box');
 
@@ -100,7 +100,7 @@ recognition.onresult = function(event) {
         counter += 1;
     }
 
-    else if (mykeyword.search("down ") == 0) {
+    else if (mykeyword.search("down") > -1 || mykeyword.search("Down") > -1) {
         var sceneEl = document.querySelector('a-scene');
         var aBox = document.createElement('a-box');
 
