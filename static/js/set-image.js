@@ -52,7 +52,7 @@ recognition.onresult = function(event) {
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(interim_transcript);
     // console.log(mykeyword);
-    if (mykeyword.search("left") > -1 || mykeyword.search("left") > -1 || mykeyword.search(" add left ") > -1) {
+    if (mykeyword.search("right") > -1) {
         var sceneEl = document.querySelector('a-scene');
         var aBox = document.createElement('a-box');
         // document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 5 0" rotation="0 0 0"></a-box>';
@@ -60,14 +60,14 @@ recognition.onresult = function(event) {
         aBox.setAttribute('depth', '4');
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
-        aBox.setAttribute('position', '5 '-(counter*4).toString()+' 0');
+        aBox.setAttribute('position', '5 '-(counter*6).toString()+' 0');
 
         sceneEl.appendChild(aBox);
         activeBox = aBox;
         counter += 1;
 
     }
-    else if (mykeyword.search("right") > -1 || mykeyword.search("right") > -1 || mykeyword.search("right ") > -1) {
+    else if (mykeyword.search("left") > -1) {
         var sceneEl = document.querySelector('a-scene');
         var aBox = document.createElement('a-box');
 
@@ -75,7 +75,7 @@ recognition.onresult = function(event) {
         aBox.setAttribute('depth', '4');
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
-        aBox.setAttribute('position', '5 '+(counter*4).toString()+' 0');
+        aBox.setAttribute('position', '5 '+(counter*6).toString()+' 0');
 
         sceneEl.appendChild(aBox);
         activeBox = aBox;
