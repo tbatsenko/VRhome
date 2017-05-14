@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>VR ideas</title>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="http://rawgit.com/dbradleyfl/aframe-gridhelper/master/dist/aframe-gridhelper-component.min.js"></script>
+    <script src="../static/js/set-image.js"></script>
+</head>
+<body>
+<!-- <h1 class="center" id="headline">VR ideas</h1> -->
+
+<a-scene>
+
+
+      <!-- Image links. -->
+      <a-text id="mytext" class="mytext" value="Hello World;"></a-text>
+      <!-- <a-text id="mytext" class="mytext" value="Say: Hello World! to start"></a-text> -->
+      <!-- <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4"> -->
+        <!-- <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity> -->
+        <!-- <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity> -->
+        <!-- <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity> -->
+      <!-- </a-entity> -->
+
+      <!-- FOR RECOGNITION -->
+      <!-- <a-entity id="cube" geometry="primitive: box" material="color: blue"></a-entity> -->
+
+
+      <!-- <a-entity template="src: #link" id="start_button" layout="type: line; margin: 1.5" position="0 2 -5" onclick="startButton(event)">
+        <!-- <a-text id="mytext"  value="Click to start"></a-text> -->
+        <!-- <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity> -->
+      <!-- </a-entity> --> -->
+
+      <a-entity id="speech" position="0 1 -1" text="Hello"></a-entity>
+      <!-- Camera + cursor. -->
+
+</a-scene>
+
+</body>
+</html>
