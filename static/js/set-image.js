@@ -94,7 +94,7 @@ function voiceToImg(keyword) {
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","3bc0090f0c7c4558a608e92114efb940");
             },
             type: "POST",
             // Request body
@@ -104,14 +104,14 @@ function voiceToImg(keyword) {
             // alert("success");
             console.log(data.value[1].contentUrl);
             var img = document.getElementById('myimg_1');
-            img.setAttribute('src', data.value[1].contentUrl);
+            // img.setAttribute('src', data.value[1].contentUrl);
 
             img = document.getElementById('myimg_2');
             img.setAttribute('src', data.value[2].contentUrl);
 
             var img = document.getElementById('myimg_3');
             img.setAttribute('src', data.value[3].contentUrl);
-            // document.getElementById("myimg_1").src = data.value[1].contentUrl;
+            document.getElementById("myimg_1").src = data.value[1].contentUrl;
             // document.getElementById("myimg_1").src.replace(/s([01]?[0-5]?[0-9]?[0-9]|1600)[^0-9]/, "s726");
             //
             // document.getElementById("myimg_2").src = data.value[2].contentUrl;
