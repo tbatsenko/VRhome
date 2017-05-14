@@ -15,7 +15,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
-        aBox.setAttribute('material', 'opacity: 0.3');
+        aBox.setAttribute('material', 'opacity: 0');
         aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
         aBox.setAttribute('cursor-listener');
 
@@ -181,6 +181,7 @@ function voiceToImg(keyword) {
         .done(function(data) {
 
             activeBox.setAttribute('src', data.value[1].thumbnailUrl);
+            activeBox.setAttribute('material', 'opacity: 1');
 
         })
         .fail(function() {
@@ -207,7 +208,12 @@ AFRAME.registerComponent('cursor-listener', {
     this.el.addEventListener('click', function (evt) {
     //   var randomIndex = Math.floor(Math.random() * COLORS.length);
     //   this.setAttribute('material', 'color', COLORS[randomIndex]);
+      if (!activeBox.getAttribute('src')) {
+          activeBox.setAttribute('material', 'opacity: 0');
+      }
       activeBox = this;
+      activeBox.setAttribute('material', 'opacity: 0.5');
+
       console.log('I was clicked at: ', evt.detail.intersection.point);
     });
   }
