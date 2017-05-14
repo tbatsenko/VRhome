@@ -1,128 +1,65 @@
-/* global AFRAME */
-
-/**
- * Component that listens to an event, fades out an entity, swaps the texture, and fades it
- * back in.
- */
-
-AFRAME.registerComponent('set-image', {
-  schema: {
-    on: {type: 'string'},
-    target: {type: 'selector'},
-    src: {type: 'string'},
-    dur: {type: 'number', default: 300}
-  },
-
-  init: function () {
-    var data = this.data;
-    var el = this.el;
-
-    this.setupFadeAnimation();
-
-    el.addEventListener(data.on, function () {
-      // Fade out image.
-      data.target.emit('set-image-fade');
-      // Wait for fade to complete.
-      setTimeout(function () {
-        // Set image.
-        data.target.setAttribute('material', 'src', data.src);
-      }, data.dur);
-    });
-  },
-
-  /**
-   * Setup fade-in + fade-out.
-   */
-  setupFadeAnimation: function () {
-    var data = this.data;
-    var targetEl = this.data.target;
-
-    // Only set up once.
-    if (targetEl.dataset.setImageFadeSetup) { return; }
-    targetEl.dataset.setImageFadeSetup = true;
-
-    // Create animation.
-    targetEl.setAttribute('animation__fade', {
-      property: 'material.color',
-      startEvents: 'set-image-fade',
-      dir: 'alternate',
-      dur: data.dur,
-      from: '#FFF',
-      to: '#000'
-    });
-  }
-});
-
-
-// showInfo('info_start');
-
 var final_transcript = '';
 var recognizing = true;
 var ignore_onend;
 var start_timestamp;
-// if (!('webkitSpeechRecognition' in window)) {
-//   upgrade();
-// } else {
-  // start_button.style.display = 'inline-block';
-  var recognition = new webkitSpeechRecognition();
-  recognition.continuous = true;
-  recognition.interimResults = true;
-  recognition.start();
 
-  recognition.onstart = function() {
+var recognition = new webkitSpeechRecognition();
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.start();
+
+recognition.onstart = function() {
     recognizing = true;
-    // showInfo('info_speak_now');
-    start_img.src = '../static/mic-animate.gif';
-  };
+};
 
-  recognition.onerror = function(event) {
-    if (event.error == 'no-speech') {
-      start_img.src = '../static/mic.gif';
-    //   showInfo('info_no_speech');
-      ignore_onend = true;
-    }
-    if (event.error == 'audio-capture') {
-      start_img.src = '../static/mic.gif';
-    //   showInfo('info_no_microphone');
-      ignore_onend = true;
-    }
-    if (event.error == 'not-allowed') {
-      if (event.timeStamp - start_timestamp < 100) {
-        // showInfo('info_blocked');
-      } else {
-        // showInfo('info_denied');
-      }
-      ignore_onend = true;
-    }
-  };
+recognition.onerror = function(event) {
+if (event.error == 'no-speech') {
+  console.log('no-speech');
+//   showInfo('info_no_speech');
+  ignore_onend = true;
+}
+if (event.error == 'audio-capture') {
+ console.log('audio-capture');
+//   showInfo('info_no_microphone');
+  ignore_onend = true;
+}
+if (event.error == 'not-allowed') {
+  if (event.timeStamp - start_timestamp < 100) {
+    // showInfo('info_blocked');
+  } else {
+    // showInfo('info_denied');
+  }
+  ignore_onend = true;
+}
+};
 
-  recognition.onend = function() {
+recognition.onend = function() {
     recognizing = false;
     if (ignore_onend) {
-      return;
+        return;
     }
-    start_img.src = '../static/mic.gif';
+// start_img.src = '../static/mic.gif';
     if (!final_transcript) {
-    //   showInfo('info_start');
-      return;
+//   showInfo('info_start');
+        return;
     }
-    // showInfo('');
-    if (window.getSelection) {
-      window.getSelection().removeAllRanges();
-      var range = document.createRange();
-      range.selectNode(document.getElementById('final_span'));
-      window.getSelection().addRange(range);
-    }
-  };
+// showInfo('');
+    // if (window.getSelection) {
+    //     window.getSelection().removeAllRanges();
+    //     var range = document.createRange();
+    //     range.selectNode(document.getElementById('final_span'));
+    //     window.getSelection().addRange(range);
+    // }
+    // };
 
-  recognition.onresult = function(event) {
+recognition.onresult = function(event) {
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) {
-        final_transcript = event.results[i][0].transcript;
-      } else {
-        interim_transcript = event.results[i][0].transcript;
-      }
+        if (event.results[i].isFinal) {
+            final_transcript = event.results[i][0].transcript;
+        } else {
+            interim_transcript = event.results[i][0].transcript;
+        }
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
@@ -143,24 +80,24 @@ var start_timestamp;
         console.log("STOPPED");
 
     }
-    // voiceToImg(mykeyword);
+// voiceToImg(mykeyword);
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
-    //   showButtons('inline-block');
+//   showButtons('inline-block');
         console.log(final_transcript);
         console.log(interim_transcript);
-        //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
-        //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
+    //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
+    //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
         document.querySelector('#speech').outerHTML='a-entity id="speech" text='+interim_transcript+'></a-entity>';
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
-            // sceneEl.querySelector('#mytext').outerHTML='<a-text id="mytext" value="{{interim_transcript}}" position="" rotation="" scale="" visible="" text=""></a-text>';
+        // sceneEl.querySelector('#mytext').outerHTML='<a-text id="mytext" value="{{interim_transcript}}" position="" rotation="" scale="" visible="" text=""></a-text>';
             console.log("STOPPED");
 
         }
     }
-  };
+};
 // }
 // document.querySelector('#cube').addEventListener('click', function () {
 // this.setAttribute('material', 'color', 'red');
@@ -196,10 +133,10 @@ var start_timestamp;
 //     });
 // }
 
-function upgrade() {
+// function upgrade() {
   // start_button.style.visibility = 'hidden';
   // showInfo('info_upgrade');
-}
+// }
 
 var two_line = /\n\n/g;
 var one_line = /\n/g;
@@ -223,7 +160,7 @@ function startButton(event) {
   ignore_onend = false;
   final_span.innerHTML = '';
   interim_span.innerHTML = '';
-  start_img.src = 'mic-slash.gif';
+  // start_img.src = 'mic-slash.gif';
   // showInfo('info_allow');
   showButtons('none');
   start_timestamp = event.timeStamp;
