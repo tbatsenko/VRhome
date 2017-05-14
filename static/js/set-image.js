@@ -1,4 +1,4 @@
-var recognizing = false;
+var recognizing = true;
 var ignore_onend;
 var start_timestamp;
 var counter = 0;
@@ -35,7 +35,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', (j*5).toString()+' 0 '+(i*5));
+        aBox.setAttribute('position', (j*5).toString()+' 25 '+(i*5));
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -51,7 +51,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', '25 '+(25-j*5).toString()+' '+(5+i*5).toString);
+        aBox.setAttribute('position', (25-j*5).toString()+' 25 '+(5+i*5).toString);
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -66,7 +66,7 @@ setTimeout(function () {
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.start();
-}, 5000);
+}, 3000);
 
 recognition.onstart = function() {
     recognizing = true;
