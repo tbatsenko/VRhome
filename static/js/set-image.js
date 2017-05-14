@@ -40,7 +40,7 @@ setTimeout(function () {
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.start();
-}, 4000);
+}, 5000);
 
 recognition.onstart = function() {
     recognizing = true;
@@ -68,7 +68,7 @@ if (event.error == 'not-allowed') {
 };
 
 recognition.onend = function() {
-    recognizing = false;
+    // recognizing = false;
 };
 
 recognition.onresult = function(event) {
@@ -170,7 +170,7 @@ recognition.onresult = function(event) {
 };
 
 function voiceToImg(keyword) {
-    recognizing = false;
+    // recognizing = false;
     if (keyword !="" && keyword !=" " && keyword !="  ") {
         var params = {
             // Request parameters
