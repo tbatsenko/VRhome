@@ -102,11 +102,19 @@ function voiceToImg(keyword) {
         .done(function(data) {
             // alert("success");
             console.log(data.value[1].contentUrl);
-            document.getElementById("myimg_1").src = data.value[1].contentUrl;
-            document.getElementById("myimg_1").src.replace(/s([01]?[0-5]?[0-9]?[0-9]|1600)[^0-9]/, "s726");
+            var img = document.getElementById('myimg_1');
+            img.setAttribute('src', data.value[1].contentUrl);
 
-            document.getElementById("myimg_2").src = data.value[2].contentUrl;
-            document.getElementById("myimg_3").src = data.value[3].contentUrl;
+            img = document.getElementById('myimg_2');
+            img.setAttribute('src', data.value[2].contentUrl);
+
+            var img = document.getElementById('myimg_3');
+            img.setAttribute('src', data.value[3].contentUrl);
+            // document.getElementById("myimg_1").src = data.value[1].contentUrl;
+            // document.getElementById("myimg_1").src.replace(/s([01]?[0-5]?[0-9]?[0-9]|1600)[^0-9]/, "s726");
+            //
+            // document.getElementById("myimg_2").src = data.value[2].contentUrl;
+            // document.getElementById("myimg_3").src = data.value[3].contentUrl;
         })
         .fail(function() {
             // alert("error");
