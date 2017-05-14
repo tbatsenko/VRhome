@@ -14,6 +14,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('depth', '4');
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
+        aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.3');
         aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
     }
