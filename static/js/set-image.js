@@ -3,6 +3,8 @@ var ignore_onend;
 var start_timestamp;
 var counter = 0;
 
+var activeBox = document.getElementById('myimg_1');
+
 var recognition = new webkitSpeechRecognition();
 setTimeout(function () {
     recognition.continuous = true;
@@ -70,7 +72,7 @@ recognition.onresult = function(event) {
         aBox.setAttribute('position', (counter*4).toString()+' 5 0');
 
         sceneEl.appendChild(aBox);
-
+        activeBox = aBox;
 
         //
         // var groupObject3D = document.querySelector('a-scene').object3D;
@@ -124,8 +126,7 @@ function voiceToImg(keyword) {
         })
         .done(function(data) {
 
-            var img = document.getElementById('myimg_1');
-            img.setAttribute('src', data.value[1].thumbnailUrl);
+            activeBox.setAttribute('src', data.value[1].thumbnailUrl);
 
         })
         .fail(function() {
