@@ -3,6 +3,21 @@ var ignore_onend;
 var start_timestamp;
 var counter = 0;
 
+var WIDTH = 5;
+var HEIGTH = 5;
+
+var sceneEl = document.querySelector('a-scene');
+for (var i = 0; i < WIDTH; i++) {
+    for (var j = 0; j < HEIGTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('position', '10'-(counter*6).toString()+' 0');
+    }
+}
+
 var activeBox = document.getElementById('myimg_1');
 
 var recognition = new webkitSpeechRecognition();
