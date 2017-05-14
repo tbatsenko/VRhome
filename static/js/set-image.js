@@ -4,7 +4,7 @@ var start_timestamp;
 var counter = 0;
 
 var recognition = new webkitSpeechRecognition();
-setTimer(function () {
+setTimeout(function () {
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.start();
