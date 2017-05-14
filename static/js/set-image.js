@@ -1,4 +1,4 @@
-var recognizing = true;
+// var recognizing = true;
 var ignore_onend;
 var start_timestamp;
 var counter = 0;
@@ -15,8 +15,41 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
-        aBox.setAttribute('material', 'opacity: 0.1');
+        aBox.setAttribute('material', 'opacity: 0.2');
         aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
+        aBox.setAttribute('cursor-listener');
+
+        sceneEl.appendChild(aBox);
+    }
+}
+
+var sceneEl = document.querySelector('a-scene');
+for (var i = 0; i < HEIGTH; i++) {
+    for (var j = 0; j < WIDTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('color', 'white');
+        aBox.setAttribute('material', 'opacity: 0.2');
+        aBox.setAttribute('position', '14 '+(-10+j*5).toString()+' '+(5+i*5).toString());
+        aBox.setAttribute('cursor-listener');
+
+        sceneEl.appendChild(aBox);
+    }
+}
+
+for (var i = 0; i < HEIGTH; i++) {
+    for (var j = 0; j < WIDTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('color', 'white');
+        aBox.setAttribute('material', 'opacity: 0.2');
+        aBox.setAttribute('position', '-14 '+(-10+j*5).toString()+' '+(5+i*5).toString());
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -27,10 +60,11 @@ var activeBox = document.getElementById('myimg_1');
 
 var recognition = new webkitSpeechRecognition();
 setTimeout(function () {
+    var recognizing = true;
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.start();
-}, 4000);
+}, 3000);
 
 recognition.onstart = function() {
     recognizing = true;
@@ -65,7 +99,7 @@ recognition.onresult = function(event) {
     recognition.stop()
     setTimeout(function () {
         recognition.start()
-    }, 1000);
+    }, 2200);
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
             interim_transcript = event.results[i][0].transcript;
@@ -172,7 +206,7 @@ function voiceToImg(keyword) {
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","275d3e8ccd774773845fe08d8616030c ");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","9f4e6f80e80c4fe18572c9d93db93f22");
             },
             type: "POST",
             // Request body
@@ -209,7 +243,7 @@ AFRAME.registerComponent('cursor-listener', {
     //   var randomIndex = Math.floor(Math.random() * COLORS.length);
     //   this.setAttribute('material', 'color', COLORS[randomIndex]);
       if (!activeBox.getAttribute('src')) {
-          activeBox.setAttribute('material', 'opacity: 0.1');
+          activeBox.setAttribute('material', 'opacity: 0.2');
       }
       activeBox = this;
       if (activeBox.getAttribute('material') !='opacity: 1') {
