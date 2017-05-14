@@ -26,12 +26,53 @@ for (var i = 0; i < HEIGTH; i++) {
         sceneEl.appendChild(aBox);
     }
 }
-// for (var z = 0; z < DEPTH; z++) {
-//     for (var j = 0; j < HEIGTH; j++) {
-//
-//     }
-//
-// }
+for (var i = 0; i < HEIGTH; i++) {
+    for (var j = 0; j < WIDTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('color', 'white');
+        aBox.setAttribute('material', 'opacity: 0.1');
+        aBox.setAttribute('position', (-10+j*6).toString()+' 0 '+(i*6));
+        aBox.setAttribute('cursor-listener');
+
+        sceneEl.appendChild(aBox);
+    }
+}
+
+for (var i = 0; i < HEIGTH; i++) {
+    for (var j = 0; j < WIDTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('color', 'white');
+        aBox.setAttribute('material', 'opacity: 0.1');
+        aBox.setAttribute('position', '16 '+(16-j*6).toString()+' '+(4+i*6).toString);
+        aBox.setAttribute('cursor-listener');
+
+        sceneEl.appendChild(aBox);
+    }
+}
+
+for (var i = 0; i < HEIGTH; i++) {
+    for (var j = 0; j < WIDTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('color', 'white');
+        aBox.setAttribute('material', 'opacity: 0.1');
+        aBox.setAttribute('position', '-16 '+(16-j*6).toString()+' '+(4+i*6).toString);
+        aBox.setAttribute('cursor-listener');
+
+        sceneEl.appendChild(aBox);
+    }
+}
 
 var activeBox = document.getElementById('myimg_1');
 
