@@ -4,9 +4,11 @@ var start_timestamp;
 var counter = 0;
 
 var recognition = new webkitSpeechRecognition();
-recognition.continuous = true;
-recognition.interimResults = true;
-recognition.start();
+setTimer(function () {
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.start();
+}, 1000);
 
 recognition.onstart = function() {
     recognizing = true;
@@ -48,16 +50,26 @@ recognition.onresult = function(event) {
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(interim_transcript);
     // console.log(mykeyword);
-    if (interim_transcript.search(" new ") != -1 || interim_transcript.search("new ") != -1 || interim_transcript.search(" new") != -1) {
-        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 0 0" rotation="0 0 0"></a-box>';
+    if (mykeyword.search(" new left") > -1 || mykeyword.search("new left") > -1 || mykeyword.search(" new left ") > -1) {
+        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 5 0" rotation="0 0 0"></a-box>';
+        console.log("ADDED NEW OBJECTs LEFT");
+    }
+    else if (mykeyword.search(" new left") > -1 || mykeyword.search("new left") > -1 || mykeyword.search(" new left ") > -1) {
+        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
         console.log("ADDED NEW OBJECTs");
     }
-    if (mykeyword =="stop" || mykeyword=="Stop") {
+
+    else if (mykeyword.search("stop") > 1 || mykeyword.search("Stop") > 1) {
         recognition.stop();
         console.log("STOPPED");
     }
 
-    if (interim_transcript != "") {
+    else if (mykeyword.search("") > 1 || mykeyword.search("Stop") > 1) {
+        recognition.stop();
+        console.log("STOPPED");
+    }
+
+    else if (interim_transcript != "") {
         // console.log(interim_transcript);
         voiceToImg(interim_transcript);
         document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" color="black" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>';
@@ -109,17 +121,4 @@ function linebreak(s) {
 var first_char = /\S/;
 function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
-}
-
-function startButton(event) {
-  if (recognizing) {
-    recognition.stop();
-    return;
-  }
-  recognition.lang = 'en-US';
-  recognition.start();
-  ignore_onend = false;
-
-  showButtons('none');
-  start_timestamp = event.timeStamp;
 }
