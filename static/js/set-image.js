@@ -172,27 +172,11 @@ recognition.onresult = function(event) {
     }
 
 
-    else if (mykeyword.search("stop") > 1 || mykeyword.search("Stop") > 1) {
-        recognition.stop();
-        console.log("STOPPED");
-    }
-
-    else if (mykeyword.search("") > 1 || mykeyword.search("Stop") > 1) {
-        recognition.stop();
-        console.log("STOPPED");
-    }
-
     else if (interim_transcript != "") {
         // console.log(interim_transcript);
-        if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
-            recognition.stop();
-            console.log("STOPPED");
-        }
         voiceToImg(interim_transcript);
         interim_transcript = "";
-
     }
-
 };
 
 function voiceToImg(keyword) {
