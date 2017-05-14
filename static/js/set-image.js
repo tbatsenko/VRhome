@@ -60,12 +60,25 @@ recognition.onresult = function(event) {
 
     }
     else if (mykeyword.search("right") > -1 || mykeyword.search("right") > -1 || mykeyword.search("right ") > -1) {
-        var groupObject3D = document.querySelector('a-scene').object3D;
-        console.log(groupObject3D.children);
-        groupObject3D.children += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
-        // document.querySelector('a-scene').innerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
-        console.log("ADDED add OBJECTs");
-        counter +=1;
+        var sceneEl = document.querySelector('a-scene');
+        var aBox = document.createElement('a-box');
+
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('position', (counter*4).toString()+' 5 0');
+
+        sceneEl.appendChild(aBox);
+
+
+        //
+        // var groupObject3D = document.querySelector('a-scene').object3D;
+        // console.log(groupObject3D.children);
+        // groupObject3D.children += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
+        // // document.querySelector('a-scene').innerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
+        // console.log("ADDED add OBJECTs");
+        // counter +=1;
     }
 
     else if (mykeyword.search("stop") > 1 || mykeyword.search("Stop") > 1) {
