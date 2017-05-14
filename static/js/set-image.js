@@ -63,11 +63,9 @@ recognition.onresult = function(event) {
     }
 // voiceToImg(mykeyword);
     // interim_span.innerHTML = linebreak(interim_transcript);
-    if (final_transcript || interim_transcript) {
+    if (interim_transcript != "") {
 //   showButtons('inline-block');
-        console.log(final_transcript);
         console.log(interim_transcript);
-        voiceToImg(final_transcript);
         voiceToImg(interim_transcript);
     //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
     //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
@@ -179,7 +177,7 @@ function startButton(event) {
     recognition.stop();
     return;
   }
-  final_transcript = '';
+  // final_transcript = '';
   recognition.lang = 'en-US';
   recognition.start();
   ignore_onend = false;
