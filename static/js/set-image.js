@@ -53,10 +53,13 @@ recognition.onresult = function(event) {
     if (mykeyword.search("left") > -1 || mykeyword.search("left") > -1 || mykeyword.search(" add left ") > -1) {
         document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 5 0" rotation="0 0 0"></a-box>';
         console.log("ADDED add OBJECTs LEFT");
+        counter +=1;
+    
     }
     else if (mykeyword.search("right") > -1 || mykeyword.search("right") > -1 || mykeyword.search("right ") > -1) {
         document.querySelector('a-scene').innerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
         console.log("ADDED add OBJECTs");
+        counter +=1;
     }
 
     else if (mykeyword.search("stop") > 1 || mykeyword.search("Stop") > 1) {
