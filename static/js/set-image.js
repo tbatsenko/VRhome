@@ -73,6 +73,7 @@ recognition.onresult = function(event) {
 
         sceneEl.appendChild(aBox);
         activeBox = aBox;
+        counter += 1;
 
         //
         // var groupObject3D = document.querySelector('a-scene').object3D;
@@ -95,14 +96,15 @@ recognition.onresult = function(event) {
 
     else if (interim_transcript != "") {
         // console.log(interim_transcript);
-        voiceToImg(interim_transcript);
-        document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" color="black" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>';
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             console.log("STOPPED");
-
         }
+        voiceToImg(interim_transcript);
+        interim_transcript = "";
+
     }
+
 };
 
 function voiceToImg(keyword) {
