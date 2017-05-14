@@ -47,9 +47,9 @@ recognition.onresult = function(event) {
 
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(interim_transcript);
-    console.log(mykeyword);
+    // console.log(mykeyword);
     if (interim_transcript.search(" new ") != -1 || interim_transcript.search("new ") != -1 || interim_transcript.search(" new") != -1) {
-        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+str(counter*4)+' 0 0" rotation="0 0 0"></a-box>'
+        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 0 0" rotation="0 0 0"></a-box>'
         console.log("STARTED");
     }
     if (mykeyword =="stop" || mykeyword=="Stop") {
@@ -58,7 +58,7 @@ recognition.onresult = function(event) {
     }
 
     if (interim_transcript != "") {
-        console.log(interim_transcript);
+        // console.log(interim_transcript);
         voiceToImg(interim_transcript);
         document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" color="black" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>'
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
