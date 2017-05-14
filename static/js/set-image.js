@@ -50,7 +50,7 @@ recognition.onresult = function(event) {
     // console.log(mykeyword);
     if (interim_transcript.search(" new ") != -1 || interim_transcript.search("new ") != -1 || interim_transcript.search(" new") != -1) {
         document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 0 0" rotation="0 0 0"></a-box>';
-        console.log("ADDED NEW OBJECT");
+        console.log("ADDED NEW OBJECTs");
     }
     if (mykeyword =="stop" || mykeyword=="Stop") {
         recognition.stop();
@@ -91,7 +91,7 @@ function voiceToImg(keyword) {
         .done(function(data) {
 
             var img = document.getElementById('myimg_1');
-            img.setAttribute('src', data.value[1].contentUrl);
+            img.setAttribute('src', "https://crossorigin.me/"+data.value[1].contentUrl);
 
         })
         .fail(function() {
