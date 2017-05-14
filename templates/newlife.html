@@ -21,13 +21,13 @@
       <a-entity position="0 0 0"><a-text id="mytext" color="blue" class="mytext" value="Hello World;"></a-text></a-entity>
 
     <!-- Camera + cursor. -->
-    <a-entity camera position="0 0 15">
-        <a-entity cursor="fuse: true; fuseTimeout: 500"
+    <a-camera position="0 0 15">
+        <a-cursor="fuse: true; fuseTimeout: 500"
                 position="0 0 -1"
                 geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                 material="color: black; shader: flat">
-        </a-entity>
-    </a-entity>
+        </a-cursor>
+    </a-camera>
     <script src="../static/js/set-image.js"></script>
 </a-scene>
 
