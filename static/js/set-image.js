@@ -42,7 +42,7 @@ recognition.onend = function() {
 recognition.onresult = function(event) {
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
-            interim_transcript += event.results[i][0].transcript;
+            interim_transcript = event.results[i][0].transcript;
     }
     interim_transcript = capitalize(interim_transcript);
     // final_span.innerHTML = linebreak(final_transcript);
@@ -55,7 +55,7 @@ recognition.onresult = function(event) {
         console.log("ADDED add OBJECTs LEFT");
     }
     else if (mykeyword.search("right") > -1 || mykeyword.search("right") > -1 || mykeyword.search("right ") > -1) {
-        document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
+        document.querySelector('a-scene').innerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
         console.log("ADDED add OBJECTs");
     }
 
