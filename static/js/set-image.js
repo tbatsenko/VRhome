@@ -51,7 +51,7 @@ recognition.onresult = function(event) {
     var mykeyword = linebreak(interim_transcript);
     // console.log(mykeyword);
     if (mykeyword.search("left") > -1 || mykeyword.search("left") > -1 || mykeyword.search(" add left ") > -1) {
-        var groupObject3Dl = document.querySelector('a-entity').object3D;
+        var groupObject3Dl = document.querySelector('a-scene').object3D;
         console.log(groupObject3D.children);
         groupObject3Dl.children += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
         // document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 5 0" rotation="0 0 0"></a-box>';
@@ -60,7 +60,7 @@ recognition.onresult = function(event) {
 
     }
     else if (mykeyword.search("right") > -1 || mykeyword.search("right") > -1 || mykeyword.search("right ") > -1) {
-        var groupObject3D = document.querySelector('a-entity').object3D;
+        var groupObject3D = document.querySelector('a-scene').object3D;
         console.log(groupObject3D.children);
         groupObject3D.children += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
         // document.querySelector('a-scene').innerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
