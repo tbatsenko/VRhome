@@ -42,6 +42,10 @@ recognition.onend = function() {
 };
 
 recognition.onresult = function(event) {
+    recognition.stop()
+    setTimeout(function () {
+        recognition.start()
+    }, 2000);
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
             interim_transcript = event.results[i][0].transcript;
@@ -80,15 +84,37 @@ recognition.onresult = function(event) {
         sceneEl.appendChild(aBox);
         activeBox = aBox;
         counter += 1;
-
-        //
-        // var groupObject3D = document.querySelector('a-scene').object3D;
-        // console.log(groupObject3D.children);
-        // groupObject3D.children += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
-        // // document.querySelector('a-scene').innerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' -5 0" rotation="0 0 0"></a-box>';
-        // console.log("ADDED add OBJECTs");
-        // counter +=1;
     }
+    else if (mykeyword.search("up ") == 0) {
+        var sceneEl = document.querySelector('a-scene');
+        var aBox = document.createElement('a-box');
+
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('position', (counter*6).toString()+' 5 0');
+
+        sceneEl.appendChild(aBox);
+        activeBox = aBox;
+        counter += 1;
+    }
+
+    else if (mykeyword.search("down ") == 0) {
+        var sceneEl = document.querySelector('a-scene');
+        var aBox = document.createElement('a-box');
+
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', '4');
+        aBox.setAttribute('width', '4');
+        aBox.setAttribute('height', '4');
+        aBox.setAttribute('position', (-counter*6).toString()+' 5 0');
+
+        sceneEl.appendChild(aBox);
+        activeBox = aBox;
+        counter += 1;
+    }
+
 
     else if (mykeyword.search("stop") > 1 || mykeyword.search("Stop") > 1) {
         recognition.stop();
