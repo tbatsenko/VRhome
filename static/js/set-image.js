@@ -91,7 +91,7 @@ function voiceToImg(keyword) {
         .done(function(data) {
 
             var img = document.getElementById('myimg_1');
-            img.setAttribute('src', "https://crossorigin.me/"+data.value[1].contentUrl);
+            img.setAttribute('src', "https://crossorigin.me/"+data.value[1].thumbnailUrl);
 
         })
         .fail(function() {
