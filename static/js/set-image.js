@@ -50,7 +50,7 @@ recognition.onend = function() {
     //     range.selectNode(document.getElementById('final_span'));
     //     window.getSelection().addRange(range);
     // }
-    // };
+};
 
 recognition.onresult = function(event) {
     var interim_transcript = '';
