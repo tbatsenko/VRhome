@@ -84,7 +84,7 @@ recognition.onresult = function(event) {
         voiceToImg(interim_transcript);
     //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
     //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
-        document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>'
+        document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" color="black" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>'
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
             var sceneEl = document.querySelector('a-scene');
