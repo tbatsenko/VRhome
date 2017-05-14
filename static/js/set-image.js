@@ -98,10 +98,6 @@ recognition.onend = function() {
 };
 
 recognition.onresult = function(event) {
-    recognition.stop()
-    setTimeout(function () {
-        recognition.start()
-    }, 1000);
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
             interim_transcript = event.results[i][0].transcript;
