@@ -81,34 +81,36 @@ recognition.onresult = function(event) {
 };
 
 function voiceToImg(keyword) {
-    var params = {
-        // Request parameters
-        "q": keyword,
-    };
-    console.log(keyword);
+    if (keyword !="" && keyword !=" " && keyword !="  ") {
+        var params = {
+            // Request parameters
+            "q": keyword,
+        };
+        console.log(keyword);
 
-    $.ajax({
-        url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
-        beforeSend: function(xhrObj){
-            // Request headers
-            xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
-        },
-        type: "POST",
-        // Request body
-        data: "{body}",
-    })
-    .done(function(data) {
-        // alert("success");
-        console.log(data.value[1].contentUrl);
-        document.getElementById("myimg_1").src = data.value[1].contentUrl;
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","multipart/form-data");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","d6a5a84f44df4a2895c50d0dd5f1464e");
+            },
+            type: "POST",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            // alert("success");
+            console.log(data.value[1].contentUrl);
+            document.getElementById("myimg_1").src = data.value[1].contentUrl;
 
-        document.getElementById("myimg_2").src = data.value[2].contentUrl;
-        document.getElementById("myimg_3").src = data.value[3].contentUrl;
-    })
-    .fail(function() {
-        // alert("error");
-    });
+            document.getElementById("myimg_2").src = data.value[2].contentUrl;
+            document.getElementById("myimg_3").src = data.value[3].contentUrl;
+        })
+        .fail(function() {
+            // alert("error");
+        });
+    }
 }
 // }
 // document.querySelector('#cube').addEventListener('click', function () {
