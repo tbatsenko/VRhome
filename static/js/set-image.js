@@ -101,7 +101,10 @@ function voiceToImg(keyword) {
     .done(function(data) {
         // alert("success");
         console.log(data.value[1].contentUrl);
-        document.getElementById("myimg_1").src = data.value[1].contentUrl;
+        if (data.value[1].contentUrl !="") {
+            document.getElementById("myimg_1").src = data.value[1].contentUrl;
+        }
+
         document.getElementById("myimg_2").src = data.value[2].contentUrl;
         document.getElementById("myimg_3").src = data.value[3].contentUrl;
     })
