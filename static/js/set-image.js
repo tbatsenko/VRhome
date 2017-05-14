@@ -8,24 +8,23 @@ var WIDTH = 5;
 var HEIGTH = 5;
 
 var sceneEl = document.querySelector('a-scene');
+
 for (var i = 0; i < HEIGTH; i++) {
     for (var j = 0; j < WIDTH; j++) {
-        // if () {
-        //
-        // }
         var aBox = document.createElement('a-box');;
         aBox.setAttribute('id', 'myimg_1');
         aBox.setAttribute('depth', '4');
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
-        aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', (-10+j*6).toString()+' '+(10-i*6).toString()+'20');
+        aBox.setAttribute('material', 'opacity: 0.2');
+        aBox.setAttribute('position', (-10+j*6).toString()+' '+(10-i*6).toString()+'0');
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
     }
 }
+
 for (var i = 0; i < HEIGTH; i++) {
     for (var j = 0; j < WIDTH; j++) {
         var aBox = document.createElement('a-box');;
@@ -34,7 +33,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('width', '4');
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
-        aBox.setAttribute('material', 'opacity: 0.1');
+        aBox.setAttribute('material', 'opacity: 0.2');
         aBox.setAttribute('position', (j*5).toString()+' 12 '+(i*5));
         aBox.setAttribute('cursor-listener');
 
@@ -42,21 +41,6 @@ for (var i = 0; i < HEIGTH; i++) {
     }
 }
 
-for (var i = 0; i < HEIGTH; i++) {
-    for (var j = 0; j < WIDTH; j++) {
-        var aBox = document.createElement('a-box');;
-        aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
-        aBox.setAttribute('color', 'white');
-        aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', '-10 '+(-10+i*5).toString()+' '+(5+i*5).toString());
-        aBox.setAttribute('cursor-listener');
-
-        sceneEl.appendChild(aBox);
-    }
-}
 
 
 var activeBox = document.getElementById('myimg_1');
