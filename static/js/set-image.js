@@ -82,7 +82,7 @@ recognition.onresult = function(event) {
 
     }
 // voiceToImg(mykeyword);
-    interim_span.innerHTML = linebreak(interim_transcript);
+    // interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
 //   showButtons('inline-block');
         console.log(final_transcript);
