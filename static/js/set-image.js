@@ -212,7 +212,9 @@ AFRAME.registerComponent('cursor-listener', {
           activeBox.setAttribute('material', 'opacity: 0.1');
       }
       activeBox = this;
-      activeBox.setAttribute('material', 'opacity: 0.4');
+      if (activeBox.getAttribute('material') !='opacity: 1') {
+          activeBox.setAttribute('material', 'opacity: 0.4');
+      }
 
       console.log('I was clicked at: ', evt.detail.intersection.point);
     });
