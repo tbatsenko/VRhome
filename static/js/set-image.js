@@ -20,7 +20,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', (-10+j*6).toString()+' '+(10-i*6).toString()+'0');
+        aBox.setAttribute('position', (-10+j*6).toString()+' '+(10-i*6).toString()+'20');
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -51,7 +51,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('height', '4');
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.1');
-        aBox.setAttribute('position', '16 '+(16-j*6).toString()+' '+(4+i*6).toString);
+        aBox.setAttribute('position', '16 '+(16-j*4).toString()+' '+(4+i*4).toString);
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
