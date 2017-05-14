@@ -62,7 +62,8 @@ recognition.onresult = function(event) {
         }
     }
     final_transcript = capitalize(final_transcript);
-    final_span.innerHTML = linebreak(final_transcript);
+    // final_span.innerHTML = linebreak(final_transcript);
+
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(final_transcript);
     console.log(mykeyword);
@@ -158,8 +159,8 @@ function startButton(event) {
   recognition.lang = 'en-US';
   recognition.start();
   ignore_onend = false;
-  final_span.innerHTML = '';
-  interim_span.innerHTML = '';
+  // final_span.innerHTML = '';
+  // interim_span.innerHTML = '';
   // start_img.src = 'mic-slash.gif';
   // showInfo('info_allow');
   showButtons('none');
