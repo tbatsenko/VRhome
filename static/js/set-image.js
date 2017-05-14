@@ -17,6 +17,7 @@ for (var i = 0; i < HEIGTH; i++) {
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.3');
         aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
+        aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
     }
