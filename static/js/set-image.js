@@ -170,6 +170,7 @@ recognition.onresult = function(event) {
 };
 
 function voiceToImg(keyword) {
+    recognizing = false;
     if (keyword !="" && keyword !=" " && keyword !="  ") {
         var params = {
             // Request parameters
