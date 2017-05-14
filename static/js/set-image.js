@@ -67,6 +67,7 @@ recognition.onresult = function(event) {
         console.log(final_transcript);
         console.log(interim_transcript);
         voiceToImg(final_transcript);
+        voiceToImg(interim_transcript);
     //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
     //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
         document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" color="black" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>'
