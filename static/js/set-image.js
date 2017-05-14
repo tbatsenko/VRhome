@@ -35,21 +35,6 @@ if (event.error == 'not-allowed') {
 
 recognition.onend = function() {
     recognizing = false;
-    if (ignore_onend) {
-        return;
-    }
-// start_img.src = '../static/mic.gif';
-    if (!final_transcript) {
-//   showInfo('info_start');
-        return;
-    }
-// showInfo('');
-    // if (window.getSelection) {
-    //     window.getSelection().removeAllRanges();
-    //     var range = document.createRange();
-    //     range.selectNode(document.getElementById('final_span'));
-    //     window.getSelection().addRange(range);
-    // }
 };
 
 recognition.onresult = function(event) {
@@ -81,13 +66,13 @@ recognition.onresult = function(event) {
 //   showButtons('inline-block');
         console.log(final_transcript);
         console.log(interim_transcript);
-        voiceToImg(interim_transcript);
+        voiceToImg(final_transcript);
     //"<a-text id="mytext" value="Say: Hello World! to start" position="" rotation="" scale="" visible="" text=""></a-text>"
     //id="mytext" class="mytext" value="Say: Hello World! to start"  position="3 -1 -4"
         document.querySelector('a-text').outerHTML='<a-text id="mytext" class="mytext" color="black" value="'+interim_transcript+'" position="" rotation="" scale="" visible="" text=""></a-text>'
         if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
             recognition.stop();
-            var sceneEl = document.querySelector('a-scene');
+            // var sceneEl = document.querySelector('a-scene');
         // sceneEl.querySelector('#mytext').outerHTML='<a-text id="mytext" value="{{interim_transcript}}" position="" rotation="" scale="" visible="" text=""></a-text>';
             console.log("STOPPED");
 
@@ -205,24 +190,24 @@ function startButton(event) {
 //   }
 // }
 
-// myimg_1.onclick = function() {
-//     var imgsrc = document.getElementById("myimg_1").src;
-//     document.getElementById("final_img").src = imgsrc;
-//     document.getElementById("img_results").style.display = "none";
-//
-//     // alert( 'Спасибо 1' );
-//   };
-// myimg_2.onclick = function() {
-//     var imgsrc = document.getElementById("myimg_2").src;
-//     document.getElementById("final_img").src = imgsrc;
-//     document.getElementById("img_results").style.display = "none";
-//
-//   // alert( 'Спасибо 2' );
-// };
-// myimg_3.onclick = function() {
-//     var imgsrc = document.getElementById("myimg_3").src;
-//     document.getElementById("final_img").src = imgsrc;
-//     document.getElementById("img_results").style.display = "none";
-//
-//   // alert( 'Спасибо 3' );
-// };
+myimg_1.onclick = function() {
+    var imgsrc = document.getElementById("myimg_1").src;
+    document.getElementById("final_img").src = imgsrc;
+    document.getElementById("img_results").style.display = "none";
+
+    // alert( 'Спасибо 1' );
+  };
+myimg_2.onclick = function() {
+    var imgsrc = document.getElementById("myimg_2").src;
+    document.getElementById("final_img").src = imgsrc;
+    document.getElementById("img_results").style.display = "none";
+
+  // alert( 'Спасибо 2' );
+};
+myimg_3.onclick = function() {
+    var imgsrc = document.getElementById("myimg_3").src;
+    document.getElementById("final_img").src = imgsrc;
+    document.getElementById("img_results").style.display = "none";
+
+  // alert( 'Спасибо 3' );
+};
