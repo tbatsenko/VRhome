@@ -6,17 +6,18 @@ var counter = 0;
 var WIDTH = 5;
 var HEIGTH = 5;
 
+var BOX_SIDE = 5;
 var sceneEl = document.querySelector('a-scene');
 for (var i = 0; i < HEIGTH; i++) {
     for (var j = 0; j < WIDTH; j++) {
         var aBox = document.createElement('a-box');;
         aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
+        aBox.setAttribute('depth', BOX_SIDE);
+        aBox.setAttribute('width', BOX_SIDE);
+        aBox.setAttribute('height', BOX_SIDE);
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.2');
-        aBox.setAttribute('position', (-10+j*5).toString()+' '+(10-i*6).toString()+' 0');
+        aBox.setAttribute('position', (-10+j*(BOX_SIDE+2)).toString()+' '+(10-i*(BOX_SIDE+2)).toString()+' 0');
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -28,12 +29,12 @@ for (var i = 0; i < HEIGTH; i++) {
     for (var j = 0; j < WIDTH; j++) {
         var aBox = document.createElement('a-box');;
         aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
+        aBox.setAttribute('depth', BOX_SIDE);
+        aBox.setAttribute('width', BOX_SIDE);
+        aBox.setAttribute('height', BOX_SIDE);
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.2');
-        aBox.setAttribute('position', '14 '+(-10+j*5).toString()+' '+(5+i*5).toString());
+        aBox.setAttribute('position', '23 '+(-18+j*(BOX_SIDE+2)).toString()+' '+(5+i*(BOX_SIDE+2)).toString());
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -44,12 +45,28 @@ for (var i = 0; i < HEIGTH; i++) {
     for (var j = 0; j < WIDTH; j++) {
         var aBox = document.createElement('a-box');;
         aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
+        aBox.setAttribute('depth', BOX_SIDE);
+        aBox.setAttribute('width', BOX_SIDE);
+        aBox.setAttribute('height', BOX_SIDE);
         aBox.setAttribute('color', 'white');
         aBox.setAttribute('material', 'opacity: 0.2');
-        aBox.setAttribute('position', '-14 '+(-10+j*5).toString()+' '+(5+i*5).toString());
+        aBox.setAttribute('position', '-15 '+(-18+j*(BOX_SIDE+2)).toString()+' '+(5+i*(BOX_SIDE+2)).toString());
+        aBox.setAttribute('cursor-listener');
+
+        sceneEl.appendChild(aBox);
+    }
+}
+
+for (var i = 0; i < HEIGTH; i++) {
+    for (var j = 0; j < WIDTH; j++) {
+        var aBox = document.createElement('a-box');;
+        aBox.setAttribute('id', 'myimg_1');
+        aBox.setAttribute('depth', BOX_SIDE);
+        aBox.setAttribute('width', BOX_SIDE);
+        aBox.setAttribute('height', BOX_SIDE);
+        aBox.setAttribute('color', 'white');
+        aBox.setAttribute('material', 'opacity: 0.2');
+        aBox.setAttribute('position', (-10+j*(BOX_SIDE+2)).toString()+' ' +((BOX_SIDE+2)*WIDTH/2).toString()+' '+(5+i*(BOX_SIDE+2)).toString());
         aBox.setAttribute('cursor-listener');
 
         sceneEl.appendChild(aBox);
@@ -58,13 +75,14 @@ for (var i = 0; i < HEIGTH; i++) {
 
 var activeBox = document.getElementById('myimg_1');
 
+var TIME_BEFORE_RECOGNITION = 1500;
 var recognition = new webkitSpeechRecognition();
 setTimeout(function () {
     var recognizing = true;
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.start();
-}, 3000);
+}, TIME_BEFORE_RECOGNITION);
 
 recognition.onstart = function() {
     recognizing = true;
@@ -99,7 +117,7 @@ recognition.onresult = function(event) {
     recognition.stop()
     setTimeout(function () {
         recognition.start()
-    }, 2200);
+    }, 2000);
     var interim_transcript = '';
     for (var i = event.resultIndex; i < event.results.length; ++i) {
             interim_transcript = event.results[i][0].transcript;
@@ -110,88 +128,18 @@ recognition.onresult = function(event) {
     console.log("SUCCESS RECOGNITION");
     var mykeyword = linebreak(interim_transcript);
     // console.log(mykeyword);
-    if (mykeyword.search("right") > -1) {
-        var sceneEl = document.querySelector('a-scene');
-        var aBox = document.createElement('a-box');
-        // document.querySelector('a-scene').outerHTML += '<a-box id="myimg_1" src="" depth="4" height="4" width="4" position="'+(counter*4).toString()+' 5 0" rotation="0 0 0"></a-box>';
-        aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
-        aBox.setAttribute('position', '5 '-(counter*6).toString()+' 0');
-
-        sceneEl.appendChild(aBox);
-        activeBox = aBox;
-        counter += 1;
-
-    }
-    else if (mykeyword.search("left") > -1) {
-        var sceneEl = document.querySelector('a-scene');
-        var aBox = document.createElement('a-box');
-
-        aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
-        aBox.setAttribute('position', '5 '+(counter*6).toString()+' 0');
-
-        sceneEl.appendChild(aBox);
-        activeBox = aBox;
-        counter += 1;
-    }
-    else if (mykeyword.search("up") > -1) {
-        var sceneEl = document.querySelector('a-scene');
-        var aBox = document.createElement('a-box');
-
-        aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
-        aBox.setAttribute('position', (counter*6).toString()+' 5 0');
-
-        sceneEl.appendChild(aBox);
-        activeBox = aBox;
-        counter += 1;
-    }
-
-    else if (mykeyword.search("down") > -1 || mykeyword.search("Down") > -1) {
-        var sceneEl = document.querySelector('a-scene');
-        var aBox = document.createElement('a-box');
-
-        aBox.setAttribute('id', 'myimg_1');
-        aBox.setAttribute('depth', '4');
-        aBox.setAttribute('width', '4');
-        aBox.setAttribute('height', '4');
-        aBox.setAttribute('position', (-counter*6).toString()+' 5 0');
-
-        sceneEl.appendChild(aBox);
-        activeBox = aBox;
-        counter += 1;
-    }
-
-
-    else if (mykeyword.search("stop") > 1 || mykeyword.search("Stop") > 1) {
-        recognition.stop();
-        console.log("STOPPED");
-    }
-
-    else if (mykeyword.search("") > 1 || mykeyword.search("Stop") > 1) {
-        recognition.stop();
-        console.log("STOPPED");
-    }
-
-    else if (interim_transcript != "") {
+    if (interim_transcript != "") {
         // console.log(interim_transcript);
-        if (interim_transcript =="stop" || interim_transcript=="Stop" || interim_transcript ==" stop" ||interim_transcript ==" Stop") {
-            recognition.stop();
-            console.log("STOPPED");
-        }
+        displayVoice(interim_transcript);
         voiceToImg(interim_transcript);
         interim_transcript = "";
-
     }
 
 };
+
+function displayVoice(recognized) {
+     document.querySelector('#mytext').setAttribute('value', recognized);
+}
 
 function voiceToImg(keyword) {
     if (keyword !="" && keyword !=" " && keyword !="  ") {
@@ -222,7 +170,6 @@ function voiceToImg(keyword) {
         });
     }
 }
-
 
 var two_line = /\n\n/g;
 var one_line = /\n/g;
